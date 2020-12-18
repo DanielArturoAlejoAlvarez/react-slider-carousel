@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# REACT SLIDER CAROUSEL V1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This repository is a Software of Application with React.
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+Using React 17.0.1 preferably.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Usage
 
-### `yarn test`
+```html
+$ git clone https://github.com/DanielArturoAlejoAlvarez/react-slider-carousel[NAME APP]
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+$ yarn install 
 
-### `yarn build`
+$ yarn start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Follow the following steps and you're good to go! Important:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![alt text](https://i.imgur.com/LDlucK8.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Coding
 
-### `yarn eject`
+### Component
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```javascript
+...
+const ImageSlider = ({ slides }) => {
+  const [current, setCurrent] = useState(0);
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  const length = slides.length;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  const prevSlide = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  };
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  };
 
-## Learn More
+  if (!Array.isArray(slides) || slides.length <= 0) {
+    return null;
+  }
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  return (
+    <section className="slider">
+      <IoIosArrowBack className="arrow-left" onClick={prevSlide} />
+      <IoIosArrowForward className="arrow-right" onClick={nextSlide} />
+      {DataSlider.map((slide, index) => (
+        <div
+          className={index === current ? "slide active" : "slide"}
+          key={index}
+        >
+          {index === current && (
+            <img src={slide.image} alt="Ferrari image" className="image" />
+          )}
+        </div>
+      ))}
+    </section>
+  );
+};
+...
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+Bug reports and pull requests are welcome on GitHub at https://github.com/DanielArturoAlejoAlvarez/react-slider-carousel. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
