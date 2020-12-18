@@ -1,10 +1,15 @@
 import React from 'react'
+import { DataSlider } from './DataSlider'
 
 const ImageSlider = () => {
   return (
-    <div>
-      <h1>Slider</h1>
-    </div>
+    <>
+      {DataSlider.map((slide,index)=>(
+        <img src={slide.image} alt="Ferrari image" />
+      ))
+
+      }
+    </>
   )
 }
 
